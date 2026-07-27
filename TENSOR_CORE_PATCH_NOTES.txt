@@ -1,0 +1,16 @@
+BuildLLM Tensor Core Training Update
+
+Changes
+
+1. Added --precision with auto, fp32, bf16, and fp16 options.
+2. Auto selects BF16 on supported CUDA GPUs and FP16 otherwise.
+3. Added CUDA automatic mixed precision to training and validation.
+4. Added FP16 gradient scaling when FP16 is selected.
+5. Enabled high precision TensorFloat32 matrix multiplication on CUDA.
+6. Enabled fused AdamW on CUDA.
+7. Added startup reporting for precision, Tensor Core use, TF32, and fused AdamW.
+8. Updated the compatibility launcher to pass precision directly to train.py.
+
+Recommended Iteration 2 balanced-corpus command
+
+python run_lab.py --iteration 2 --device cuda --epochs 3 --batch-size 16 --precision bf16 --training-examples 0 --validation-examples 0 --train-tokens data/tokens/balanced/train_tokens.pt --validation-tokens data/tokens/balanced/validation_tokens.pt --tokenizer tokenizer/balanced_tokenizer.json --checkpoint-directory checkpoints/iteration_2_balanced

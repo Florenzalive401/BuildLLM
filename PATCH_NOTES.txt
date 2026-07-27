@@ -1,0 +1,29 @@
+BuildLLM corpus progress patch
+
+Diagnosis
+
+The balanced pipeline did not ignore a stop condition.
+
+Wikipedia ended at 9,868 accepted documents because the input wikipedia_simple.jsonl contains 10,000 extracted articles and the balanced pipeline filtered 132 of them.
+
+FineWeb Edu is configured with target_characters: 350000000. At 322,947,823 accepted characters, it had reached about 92.3 percent of that target. The shuffle_buffer value of 10000 controls randomized streaming order. It is not a document cap.
+
+Changes
+
+1. Source progress now uses characters when target_characters is configured. FineWeb will display progress toward 350 million characters rather than only an increasing document count.
+
+2. Progress also displays accepted document and character totals.
+
+3. The report now records why each source stopped, including target_characters_reached, maximum_documents_reached, global limits, or source_exhausted.
+
+4. Documentation and YAML comments clarify that shuffle_buffer is not a document limit.
+
+5. Tests verify source character and document stopping conditions.
+
+No corpus size targets were changed.
+
+Validation
+
+pytest tests/test_corpus_pipeline.py tests/test_corpus_dedup.py
+
+Result: 5 passed

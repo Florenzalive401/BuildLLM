@@ -1,0 +1,20 @@
+BuildLLM uses separate licenses for source code and educational content.
+
+Source code
+-----------
+
+The Python source code, tests, tools, configuration files, and GitHub
+automation are licensed under the MIT License in LICENSE-CODE.
+
+Educational content
+-------------------
+
+The course lessons and educational documentation are licensed under the
+Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
+License described in LICENSE-CONTENT.
+
+Copyright © 2026 DrDeathLabs.
+
+These licenses do not grant permission to use the DrDeathLabs name, BuildLLM
+name, logos, or other branding to imply endorsement, sponsorship, or
+affiliation.

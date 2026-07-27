@@ -1,0 +1,19 @@
+{
+  "name": "BuildLLM Iteration 2, 42M",
+  "description": "The second successful build, scaled to approximately 42 million parameters with stronger language formation.",
+  "course_iteration": 2,
+  "learning_objective": "Compare the first model with a larger architecture and learn how capacity, data, validation, and accelerated training change model behavior.",
+  "sequence_length": 256,
+  "embedding_dimension": 512,
+  "layers": 8,
+  "attention_heads": 8,
+  "feed_forward_dimension": 2048,
+  "batch_size": 16,
+  "learning_rate": 0.0003,
+  "weight_decay": 0.1,
+  "precision": "bf16",
+  "runtime": {
+    "cpu": {"batch_size": 1, "precision": "fp32", "workers": 0},
+    "gpu": {"batch_size": 16, "precision": "bf16", "workers": 0}
+  }
+}

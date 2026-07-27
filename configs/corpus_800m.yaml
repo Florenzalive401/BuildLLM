@@ -1,0 +1,82 @@
+version: 1
+seed: 1729
+
+output:
+  corpus: data/processed/training_corpus_800m.jsonl
+  report: data/reports/training_corpus_800m_report.json
+
+# This target supports the 800M larger-data training path. Actual training time
+# depends on token density, model profile, epoch count, accelerator, thermals,
+# and storage performance.
+limits:
+  maximum_characters: 800000000
+
+quality:
+  minimum_score: 55
+  minimum_characters: 500
+  maximum_characters: 2000000
+
+balancing:
+  enabled: true
+  overflow_factor: 1.20
+  topic_weights:
+    general: 0.22
+    technology: 0.13
+    cybersecurity: 0.08
+    science: 0.12
+    mathematics: 0.08
+    history: 0.09
+    government: 0.06
+    business: 0.07
+    health: 0.05
+    arts_and_culture: 0.05
+    geography: 0.05
+
+# Near duplicate filtering remains enabled. This costs build time, but prevents
+# the larger corpus from gaining size by repeating substantially similar text.
+deduplication:
+  near_duplicates: true
+  maximum_hamming_distance: 3
+
+sources:
+  # Use the existing local Wikipedia corpus first. If you later build full
+  # English Wikipedia, change this path to data/processed/wikipedia_en.jsonl.
+  - name: wikipedia
+    type: jsonl
+    enabled: true
+    path: data/processed/wikipedia_simple.jsonl
+    text_field: text
+    title_field: title
+    id_field: page_id
+    license: CC BY SA 4.0 and GFDL
+    target_characters: 150000000
+    minimum_quality_score: 50
+
+  # RFCs add high quality technical and networking material before the streamed
+  # web source fills the remaining global character budget.
+  - name: rfc
+    type: rfc
+    enabled: true
+    cache_directory: data/raw/rfc
+    include_obsolete: false
+    license: IETF Trust Legal Provisions
+    target_characters: 50000000
+    minimum_quality_score: 45
+
+  # FineWeb Edu is streamed and stops when the accepted corpus reaches the
+  # global 800 million character target. Nothing close to the full remote
+  # dataset is downloaded locally.
+  - name: fineweb_edu
+    type: huggingface
+    enabled: true
+    dataset: HuggingFaceFW/fineweb-edu
+    configuration: sample-10BT
+    split: train
+    text_fields: [text]
+    title_fields: [title]
+    id_fields: [id, url]
+    license: ODC By 1.0
+    target_characters: 800000000
+    shuffle_buffer: 25000
+    seed: 42
+    minimum_quality_score: 60

@@ -1,0 +1,70 @@
+version: 1
+seed: 1729
+
+output:
+  corpus: data/processed/training_corpus_learning_50m.jsonl
+  report: data/reports/training_corpus_learning_50m_report.json
+
+limits:
+  maximum_characters: 50000000
+
+quality:
+  minimum_score: 55
+  minimum_characters: 300
+  maximum_characters: 2000000
+
+balancing:
+  enabled: true
+  overflow_factor: 1.20
+  topic_weights:
+    general: 0.20
+    technology: 0.12
+    cybersecurity: 0.08
+    science: 0.12
+    mathematics: 0.08
+    history: 0.10
+    government: 0.07
+    business: 0.07
+    health: 0.05
+    arts_and_culture: 0.06
+    geography: 0.05
+
+deduplication:
+  near_duplicates: true
+  maximum_hamming_distance: 3
+
+sources:
+  - name: wikipedia
+    type: jsonl
+    enabled: true
+    path: data/processed/wikipedia_simple.jsonl
+    text_field: text
+    title_field: title
+    id_field: page_id
+    license: CC BY SA 4.0 and GFDL
+    target_characters: 15000000
+    minimum_quality_score: 50
+
+  - name: rfc
+    type: rfc
+    enabled: true
+    cache_directory: data/raw/rfc
+    include_obsolete: false
+    license: IETF Trust Legal Provisions
+    target_characters: 10000000
+    minimum_quality_score: 45
+
+  - name: fineweb_edu
+    type: huggingface
+    enabled: true
+    dataset: HuggingFaceFW/fineweb-edu
+    configuration: sample-10BT
+    split: train
+    text_fields: [text]
+    title_fields: [title]
+    id_fields: [id, url]
+    license: ODC By 1.0
+    target_characters: 25000000
+    shuffle_buffer: 10000
+    seed: 42
+    minimum_quality_score: 60

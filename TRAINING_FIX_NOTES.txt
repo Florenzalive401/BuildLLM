@@ -1,0 +1,12 @@
+Tensor Core training and full dataset fix
+
+Corrected behavior:
+  training examples 0 uses the full training token file
+  validation examples 0 uses the full validation token file
+  BF16 autocast remains enabled
+  TF32 remains enabled
+  fused AdamW remains enabled
+
+Verification:
+  352 tests passed
+  1 test skipped

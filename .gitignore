@@ -1,0 +1,49 @@
+# Python environments and caches
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Generated BuildLLM artifacts
+artifacts/
+checkpoints/
+data/
+runs/
+tokenizer/*.json
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.bin
+*.jsonl
+
+# Downloaded and compressed corpora
+*.bz2
+*.gz
+*.xz
+*.zst
+*.zip
+*.tar
+*.tar.gz
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+*.bak
+*.swp
+~$*
+
+# Editors and operating systems
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+Desktop.ini

@@ -1,0 +1,19 @@
+{
+  "name": "BuildLLM Iteration 1, First Successful Build",
+  "description": "A deliberately small CPU first GPT that proves the complete pipeline and begins producing recognizable language.",
+  "course_iteration": 1,
+  "learning_objective": "Build the first complete language model on ordinary hardware and observe the transition from random output to barely coherent text.",
+  "sequence_length": 128,
+  "embedding_dimension": 192,
+  "layers": 4,
+  "attention_heads": 6,
+  "feed_forward_dimension": 768,
+  "batch_size": 8,
+  "learning_rate": 0.0003,
+  "weight_decay": 0.01,
+  "precision": "auto",
+  "runtime": {
+    "cpu": {"batch_size": 4, "precision": "fp32", "workers": 0},
+    "gpu": {"batch_size": 16, "precision": "auto", "workers": 0}
+  }
+}

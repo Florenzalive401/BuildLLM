@@ -1,0 +1,19 @@
+{
+  "name": "BuildLLM Iteration 3, 100M",
+  "description": "The current approximately 98.5 million parameter model used for the long 18 epoch training run.",
+  "course_iteration": 3,
+  "learning_objective": "Treat model training as a systems engineering problem involving scale, reliability, mixed precision, checkpoint recovery, validation, and long running operations.",
+  "sequence_length": 256,
+  "embedding_dimension": 720,
+  "layers": 12,
+  "attention_heads": 12,
+  "feed_forward_dimension": 2880,
+  "batch_size": 16,
+  "learning_rate": 0.00025,
+  "weight_decay": 0.1,
+  "precision": "bf16",
+  "runtime": {
+    "cpu": {"batch_size": 1, "precision": "fp32", "workers": 0},
+    "gpu": {"batch_size": 16, "precision": "bf16", "workers": 0}
+  }
+}

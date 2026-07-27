@@ -1,0 +1,24 @@
+version: 1
+seed: 1729
+output:
+  corpus: data/processed/training_corpus_pipeline_verification.jsonl
+  report: data/reports/training_corpus_pipeline_verification_report.json
+limits:
+  maximum_documents: 1000
+quality:
+  minimum_score: 45
+  minimum_characters: 300
+  maximum_characters: 2000000
+deduplication:
+  near_duplicates: true
+  maximum_hamming_distance: 3
+sources:
+  - name: wikipedia
+    type: jsonl
+    enabled: true
+    path: data/processed/wikipedia_simple.jsonl
+    text_field: text
+    title_field: title
+    id_field: page_id
+    license: CC BY SA 4.0 and GFDL
+    maximum_documents: 1000
